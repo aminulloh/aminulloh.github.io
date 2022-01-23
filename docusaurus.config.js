@@ -14,7 +14,7 @@ const config = {
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'aminulloh', // Usually your GitHub org/user name.
-  projectName: 'page', // Usually your repo name.
+  projectName: 'aminulloh.github.io', // Usually your repo name.
   noIndex: true,
   presets: [
     [
