@@ -6,35 +6,35 @@ sidebar_position: 1
 
 ## Book List
 ### Self-Help
-- Jim Rohn Fundamentals | [Summary Notes](../docs/BookNotes/Self-Help/Jim-Rohn-Fundamental)
-- Design Your Life by [Bill Burnett and Dave Evans](https://www.amazon.com/Designing-Your-Life-Well-Lived-Joyful/dp/1101875321) | [Summary Notes](../docs/BookNotes/Self-Help/Designing-Your-Life) 
-- The 10X Rules by Grant Cardone | [Summary Notes](../docs/BookNotes/Self-Help/The-10x-Rule)
-- Secrets of the Millionaire Mind | [Summary Notes](../docs/BookNotes/Self-Help/Secrets-of-the-Millionaire-Mind)
-- Digital Minimalism by Cal Newport | [Summary Notes](../docs/BookNotes/Self-Help/Digital-Minimalism)
-- Deep Work by Cal Newport | [Summary Notes](../docs/BookNotes/Self-Help/Deep-Work)
-- Get Things Done by David Allen | [Summary Notes](../docs/BookNotes/Self-Help/Get-Things-Done)
-- Eat That  Frog by Brian Tracy | [Summary Notes](../docs/BookNotes/Self-Help/Eat-That-Frog)
-- Awaken The Giant Within by Anthony Robbins | [Summary Notes](../docs/BookNotes/Self-Help/Awaken-the-Giant-Within)
-- The E-Myth Revisited by Michael Gerber | [Summary Notes](../docs/BookNotes/Self-Help/The-e-myth-revisited)
-- Hack The Entrepreneur by Jon Nastor | [Summary Notes](../docs/BookNotes/Self-Help/Hack-The-Entrepreneur)
-- Obstacle is the Way by Ryan Holliday | [Summary Notes](../docs/BookNotes/Self-Help/Obstacle-is-the-Way)
-- Essentialism by Greg McKeown | [Summary Notes](../docs/BookNotes/Self-Help/Essentialism)
-- The Alamanack of Naval Ravikant by Eric Jorgenson | [Summary Notes](../docs/BookNotes/Self-Help/The-Alamanack-of-Naval-Ravikant)
-- Effortless by Greg McKeown | [Summary Notes](../docs/BookNotes/Self-Help/Effortless)
-- Factfulness by Hans Rosling | [Summary Notes](../docs/BookNotes/Self-Help/Factfulness)
-- Ego is the Enemy by Ryan Holiday | [Summary Notes](../docs/BookNotes/Self-Help/Ego-is-the-Enemy)
-- Atomic Habits by James Clear | [Summary Notes](../docs/BookNotes/Self-Help/Atomic-Habits)
-- The 7 Habits of Highly Effective People by Steven Covey | [Summary Notes](../docs/BookNotes/Self-Help/The-7-Habits-of-Highly-effective-People)
-- Unlimited Power by Anthony Robbins | [Summary Notes](../docs/BookNotes/Self-Help/Unlimited-Power)
-- The One thing by Garry Keller | [Summary Notes](../docs/BookNotes/Self-Help/The-One-Thing)
-- The Richest Man in Babylon by George S. Clason | [Summary Notes](../docs/BookNotes/Self-Help/The-Richest-Man-in-Babylon)
-- The Psychology of Money by Morgan Housel | [Summary Notes](../docs/BookNotes/Self-Help/The-Psychology-of-Money)
-- Reinvent Yourself by James Altucher | [Summary Notes](../docs/BookNotes/Self-Help/Reinvent-Yourself)
-- Rich Dad Poor Dad by Robert T. Kiyosaki | [Summary Notes](../docs/BookNotes/Self-Help/Rich-Dad-Poor-Dad)
-- Think and Grow Rich by Napoleon Hill | [Summary Notes](../docs/BookNotes/Self-Help/Think-and-Grow-Rich)
-- Start With Why by Simon Sinek | [Summary Notes](../docs/BookNotes/Self-Help/Start-With-Why)
-- Grit by Angela Duckworth | [Summary Notes](../docs/BookNotes/Self-Help/Grit)
-- Switch by Chip & Dan Heath | [Summary Notes](../docs/BookNotes/Self-Help/Switch)
+- Jim Rohn Fundamentals | [Summary Notes](../BookNotes/Self-Help/Jim-Rohn-Fundamental)
+- Design Your Life by [Bill Burnett and Dave Evans](https://www.amazon.com/Designing-Your-Life-Well-Lived-Joyful/dp/1101875321) | [Summary Notes](../BookNotes/Self-Help/Designing-Your-Life) 
+- The 10X Rules by Grant Cardone | [Summary Notes](../BookNotes/Self-Help/The-10x-Rule)
+- Secrets of the Millionaire Mind | [Summary Notes](../BookNotes/Self-Help/Secrets-of-the-Millionaire-Mind)
+- Digital Minimalism by Cal Newport | [Summary Notes](../BookNotes/Self-Help/Digital-Minimalism)
+- Deep Work by Cal Newport | [Summary Notes](../BookNotes/Self-Help/Deep-Work)
+- Get Things Done by David Allen | [Summary Notes](../BookNotes/Self-Help/Get-Things-Done)
+- Eat That  Frog by Brian Tracy | [Summary Notes](../BookNotes/Self-Help/Eat-That-Frog)
+- Awaken The Giant Within by Anthony Robbins | [Summary Notes](../BookNotes/Self-Help/Awaken-the-Giant-Within)
+- The E-Myth Revisited by Michael Gerber | [Summary Notes](../BookNotes/Self-Help/The-e-myth-revisited)
+- Hack The Entrepreneur by Jon Nastor | [Summary Notes](../BookNotes/Self-Help/Hack-The-Entrepreneur)
+- Obstacle is the Way by Ryan Holliday | [Summary Notes](../BookNotes/Self-Help/Obstacle-is-the-Way)
+- Essentialism by Greg McKeown | [Summary Notes](../BookNotes/Self-Help/Essentialism)
+- The Alamanack of Naval Ravikant by Eric Jorgenson | [Summary Notes](../BookNotes/Self-Help/The-Alamanack-of-Naval-Ravikant)
+- Effortless by Greg McKeown | [Summary Notes](../BookNotes/Self-Help/Effortless)
+- Factfulness by Hans Rosling | [Summary Notes](../BookNotes/Self-Help/Factfulness)
+- Ego is the Enemy by Ryan Holiday | [Summary Notes](../BookNotes/Self-Help/Ego-is-the-Enemy)
+- Atomic Habits by James Clear | [Summary Notes](../BookNotes/Self-Help/Atomic-Habits)
+- The 7 Habits of Highly Effective People by Steven Covey | [Summary Notes](../BookNotes/Self-Help/The-7-Habits-of-Highly-effective-People)
+- Unlimited Power by Anthony Robbins | [Summary Notes](../BookNotes/Self-Help/Unlimited-Power)
+- The One thing by Garry Keller | [Summary Notes](../BookNotes/Self-Help/The-One-Thing)
+- The Richest Man in Babylon by George S. Clason | [Summary Notes](../BookNotes/Self-Help/The-Richest-Man-in-Babylon)
+- The Psychology of Money by Morgan Housel | [Summary Notes](../BookNotes/Self-Help/The-Psychology-of-Money)
+- Reinvent Yourself by James Altucher | [Summary Notes](../BookNotes/Self-Help/Reinvent-Yourself)
+- Rich Dad Poor Dad by Robert T. Kiyosaki | [Summary Notes](../BookNotes/Self-Help/Rich-Dad-Poor-Dad)
+- Think and Grow Rich by Napoleon Hill | [Summary Notes](../BookNotes/Self-Help/Think-and-Grow-Rich)
+- Start With Why by Simon Sinek | [Summary Notes](../BookNotes/Self-Help/Start-With-Why)
+- Grit by Angela Duckworth | [Summary Notes](../BookNotes/Self-Help/Grit)
+- Switch by Chip & Dan Heath | [Summary Notes](../BookNotes/Self-Help/Switch)
 ### Business and Management
 **Entrepreneurship**
 - Succeding as an Entrepreneur by Havard Business Review
@@ -61,7 +61,7 @@ sidebar_position: 1
 
 ### Investment
 **Investing Essentials**
-- A Beginner's Guide to Asset Classes [Notes](../docs/BookNotes/Investment/Investing%20Essentials/A-Beginner's-Guide-to-Asset-Classes)
+- A Beginner's Guide to Asset Classes [Notes](../BookNotes/Investment/Investing%20Essentials/A-Beginner's-Guide-to-Asset-Classes)
 - Stock Market Basic
 - Stock Market Definition
 - How stock Investing Works
