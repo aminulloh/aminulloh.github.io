@@ -27,7 +27,7 @@ export default function Home({ posts }) {
             New Posts
           </h1>
         </div>
-        
+
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
           {!posts.length && 'No posts found.'}
           {posts.slice(0, MAX_DISPLAY).map((post) => {
