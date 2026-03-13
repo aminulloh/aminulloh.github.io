@@ -13,13 +13,12 @@ export default function Comments({ slug }: { slug: string }) {
     return null
   }
 
-  const comments = siteMetadata.comments as Record<string, unknown> & {
-    giscusConfig: Record<string, unknown>
-  }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const giscusConfig = (siteMetadata.comments as any).giscusConfig ?? {}
   const commentsConfig = {
     ...siteMetadata.comments,
     giscusConfig: {
-      ...comments.giscusConfig,
+      ...giscusConfig,
       theme: resolvedTheme === 'dark' ? 'transparent_dark' : 'light',
     },
   }
