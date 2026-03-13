@@ -41,9 +41,7 @@ export default function AuthorLayout({ children, content }: Props) {
               <SocialIcon kind="bluesky" href={bluesky} />
             </div>
           </div>
-          <div className="prose dark:prose-invert max-w-none pt-8 pb-8">
-            {children}
-          </div>
+          <div className="prose dark:prose-invert max-w-none pt-8 pb-8">{children}</div>
         </div>
       </div>
     </>
