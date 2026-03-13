@@ -13,10 +13,13 @@ export default function Comments({ slug }: { slug: string }) {
     return null
   }
 
+  const comments = siteMetadata.comments as Record<string, unknown> & {
+    giscusConfig: Record<string, unknown>
+  }
   const commentsConfig = {
     ...siteMetadata.comments,
     giscusConfig: {
-      ...siteMetadata.comments.giscusConfig,
+      ...comments.giscusConfig,
       theme: resolvedTheme === 'dark' ? 'transparent_dark' : 'light',
     },
   }
