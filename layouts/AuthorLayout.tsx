@@ -204,20 +204,20 @@ const experiences = [
   {
     type: 'RESEARCH · ENGINEERING',
     title: 'EV Researcher',
-    company: 'CReATE',
+    company: 'Center for Research and Innovation on Advanced Transportation Electrification (CReATE)',
     period: 'Aug 2022 – Feb 2023',
     description:
       'Conducted applied research on electric vehicle systems and charging infrastructure for the Indonesian market.',
-    impact: ['Applied EV charging infrastructure research for Indonesian market'],
+    impact: ['Produce 1 research paper and 1 patent'],
   },
   {
     type: 'RESEARCH · ROBOTICS',
     title: 'Robotics Researcher',
-    company: 'RoISC',
+    company: 'Robotics and Intelligent Systems Center (RoISC)',
     period: 'Jul 2018 – Aug 2022',
     description:
-      'Led robotics research projects focused on autonomous systems and control algorithms over 4 years.',
-    impact: ['Led multi-year autonomous systems and control algorithm research'],
+      'Conducted robotics research projects focused on autonomous systems and control algorithms over 4 years.',
+    impact: ['Produce 3 research papers and 2 patents'],
   },
   {
     type: 'MANAGEMENT · OPERATIONS',
