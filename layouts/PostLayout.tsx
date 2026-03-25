@@ -72,7 +72,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                           className="h-9 w-9 rounded-full"
                         />
                       )}
-                      <dl className="text-sm font-medium leading-5">
+                      <dl className="text-sm leading-5 font-medium">
                         <dt className="sr-only">Name</dt>
                         <dd className="text-gray-900 dark:text-gray-100">{author.name}</dd>
                         <dt className="sr-only">Twitter</dt>
@@ -126,7 +126,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                   <div className="space-y-4 py-6">
                     {prev && prev.path && (
                       <div>
-                        <h2 className="mb-1 text-xs font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500">
+                        <h2 className="mb-1 text-xs font-semibold tracking-widest text-gray-400 uppercase dark:text-gray-500">
                           Previous
                         </h2>
                         <Link
@@ -139,7 +139,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                     )}
                     {next && next.path && (
                       <div>
-                        <h2 className="mb-1 text-xs font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500">
+                        <h2 className="mb-1 text-xs font-semibold tracking-widest text-gray-400 uppercase dark:text-gray-500">
                           Next
                         </h2>
                         <Link

@@ -13,7 +13,10 @@ export default function Footer() {
           <SocialIcon kind="x" href={siteMetadata.x} size={5} />
           <SocialIcon kind="bluesky" href={siteMetadata.bluesky} size={5} />
         </div>
-        <p className="mt-4 text-xs text-gray-400 dark:text-gray-500 sm:mt-0" suppressHydrationWarning>
+        <p
+          className="mt-4 text-xs text-gray-400 sm:mt-0 dark:text-gray-500"
+          suppressHydrationWarning
+        >
           {siteMetadata.author} &copy; {new Date().getFullYear()}
         </p>
       </div>

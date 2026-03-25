@@ -88,7 +88,7 @@ export default function ListLayout({
     <>
       <div className="py-10">
         <div className="mb-10 space-y-4">
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl">
+          <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-gray-100">
             {title}
           </h1>
           <div className="relative max-w-sm">
@@ -99,7 +99,7 @@ export default function ListLayout({
                 type="text"
                 onChange={(e) => setSearchValue(e.target.value)}
                 placeholder="Search…"
-                className="block w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-primary-400 focus:ring-1 focus:ring-primary-400 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:placeholder-gray-500 dark:focus:border-primary-500"
+                className="focus:border-primary-400 focus:ring-primary-400 dark:focus:border-primary-500 block w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:ring-1 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:placeholder-gray-500"
               />
             </label>
             <svg
@@ -139,16 +139,18 @@ export default function ListLayout({
                     {formatDate(date, siteMetadata.locale)}
                   </time>
                   <div className="flex-1 space-y-2">
-                    <h2 className="text-lg font-semibold leading-snug tracking-tight">
+                    <h2 className="text-lg leading-snug font-semibold tracking-tight">
                       <Link
                         href={`/${path}`}
-                        className="text-gray-900 transition-colors hover:text-primary-600 dark:text-gray-100 dark:hover:text-primary-400"
+                        className="hover:text-primary-600 dark:hover:text-primary-400 text-gray-900 transition-colors dark:text-gray-100"
                       >
                         {title}
                       </Link>
                     </h2>
                     <div className="flex flex-wrap gap-1">
-                      {tags?.map((tag) => <Tag key={tag} text={tag} />)}
+                      {tags?.map((tag) => (
+                        <Tag key={tag} text={tag} />
+                      ))}
                     </div>
                     <p className="text-sm leading-relaxed text-gray-500 dark:text-gray-400">
                       {summary}
