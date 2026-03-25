@@ -7,22 +7,22 @@
 /* Core theme configuration */
 @theme {
   /* Font families */
-  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
   /* Colors */
-  /* Copied from https://tailwindcss.com/docs/theme#default-theme-variable-reference */
-  --color-primary-50: oklch(0.971 0.014 343.198);
-  --color-primary-100: oklch(0.948 0.028 342.258);
-  --color-primary-200: oklch(0.899 0.061 343.231);
-  --color-primary-300: oklch(0.823 0.12 346.018);
-  --color-primary-400: oklch(0.718 0.202 349.761);
-  --color-primary-500: oklch(0.656 0.241 354.308);
-  --color-primary-600: oklch(0.592 0.249 0.584);
-  --color-primary-700: oklch(0.525 0.223 3.958);
-  --color-primary-800: oklch(0.459 0.187 3.815);
-  --color-primary-900: oklch(0.408 0.153 2.432);
-  --color-primary-950: oklch(0.284 0.109 3.907);
+  /* Blue palette — clean, professional, Linear/Apple-style */
+  --color-primary-50: oklch(0.974 0.026 255);
+  --color-primary-100: oklch(0.944 0.054 255);
+  --color-primary-200: oklch(0.877 0.103 254);
+  --color-primary-300: oklch(0.793 0.153 253);
+  --color-primary-400: oklch(0.694 0.175 254);
+  --color-primary-500: oklch(0.623 0.214 258);
+  --color-primary-600: oklch(0.546 0.203 262);
+  --color-primary-700: oklch(0.471 0.176 265);
+  --color-primary-800: oklch(0.398 0.148 268);
+  --color-primary-900: oklch(0.336 0.124 270);
+  --color-primary-950: oklch(0.234 0.086 272);
 
   --color-gray-50: oklch(0.985 0.002 247.839);
   --color-gray-100: oklch(0.967 0.003 264.542);
@@ -41,6 +41,26 @@
   --line-height-12: 3rem;
   --line-height-13: 3.25rem;
   --line-height-14: 3.5rem;
+
+  /* Violet/purple secondary palette */
+  --color-violet-50: oklch(0.977 0.013 308.299);
+  --color-violet-100: oklch(0.954 0.029 310.424);
+  --color-violet-200: oklch(0.904 0.063 313.39);
+  --color-violet-300: oklch(0.841 0.111 317.006);
+  --color-violet-400: oklch(0.757 0.152 317.886);
+  --color-violet-500: oklch(0.659 0.196 315.04);
+  --color-violet-600: oklch(0.559 0.204 312.685);
+  --color-violet-700: oklch(0.476 0.182 312.376);
+  --color-violet-800: oklch(0.405 0.154 311.516);
+  --color-violet-900: oklch(0.346 0.127 311.411);
+  --color-violet-950: oklch(0.238 0.09 310.019);
+
+  /* Emerald for status badge */
+  --color-emerald-50: oklch(0.979 0.021 166.113);
+  --color-emerald-400: oklch(0.765 0.177 163.223);
+  --color-emerald-500: oklch(0.696 0.17 162.48);
+  --color-emerald-800: oklch(0.432 0.095 166.913);
+  --color-emerald-950: oklch(0.262 0.051 172.552);
 
   /* Z-index values */
   --z-60: 60;
@@ -176,4 +196,39 @@ input:-webkit-autofill:focus {
 
 .prose p {
   text-align: justify;
+}
+
+/* Modern transition defaults */
+a,
+button {
+  transition-property: color, background-color, border-color, opacity, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Underline hover animation for nav links */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background-color: var(--color-primary-500);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* Subtle card hover — Apple/Linear style */
+.card-hover {
+  transition-property: border-color, background-color, box-shadow;
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }

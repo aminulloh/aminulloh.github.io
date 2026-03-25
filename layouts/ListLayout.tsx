@@ -30,35 +30,40 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
   const nextPage = currentPage + 1 <= totalPages
 
   return (
-    <div className="space-y-2 pt-6 pb-8 md:space-y-5">
-      <nav className="flex justify-between">
-        {!prevPage && (
-          <button className="cursor-auto disabled:opacity-50" disabled={!prevPage}>
-            Previous
-          </button>
-        )}
-        {prevPage && (
+    <div className="flex items-center justify-between border-t border-gray-100 py-8 dark:border-gray-800/60">
+      <div>
+        {prevPage ? (
           <Link
             href={currentPage - 1 === 1 ? `/${basePath}/` : `/${basePath}/page/${currentPage - 1}`}
             rel="prev"
+            className="text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
           >
-            Previous
+            &larr; Previous
           </Link>
+        ) : (
+          <span className="cursor-not-allowed text-sm text-gray-300 dark:text-gray-700">
+            &larr; Previous
+          </span>
         )}
-        <span>
-          {currentPage} of {totalPages}
-        </span>
-        {!nextPage && (
-          <button className="cursor-auto disabled:opacity-50" disabled={!nextPage}>
-            Next
-          </button>
-        )}
-        {nextPage && (
-          <Link href={`/${basePath}/page/${currentPage + 1}`} rel="next">
-            Next
+      </div>
+      <span className="text-sm text-gray-400 dark:text-gray-500">
+        {currentPage} / {totalPages}
+      </span>
+      <div>
+        {nextPage ? (
+          <Link
+            href={`/${basePath}/page/${currentPage + 1}`}
+            rel="next"
+            className="text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
+          >
+            Next &rarr;
           </Link>
+        ) : (
+          <span className="cursor-not-allowed text-sm text-gray-300 dark:text-gray-700">
+            Next &rarr;
+          </span>
         )}
-      </nav>
+      </div>
     </div>
   )
 }
@@ -81,24 +86,24 @@ export default function ListLayout({
 
   return (
     <>
-      <div className="divide-y divide-gray-200 dark:divide-gray-700">
-        <div className="space-y-2 pt-6 pb-8 md:space-y-5">
-          <h1 className="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 dark:text-gray-100">
+      <div className="py-10">
+        <div className="mb-10 space-y-4">
+          <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-gray-100">
             {title}
           </h1>
-          <div className="relative max-w-lg">
+          <div className="relative max-w-sm">
             <label>
               <span className="sr-only">Search articles</span>
               <input
                 aria-label="Search articles"
                 type="text"
                 onChange={(e) => setSearchValue(e.target.value)}
-                placeholder="Search articles"
-                className="focus:border-primary-500 focus:ring-primary-500 block w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-900 dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100"
+                placeholder="Search…"
+                className="focus:border-primary-400 focus:ring-primary-400 dark:focus:border-primary-500 block w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:ring-1 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:placeholder-gray-500"
               />
             </label>
             <svg
-              className="absolute top-3 right-3 h-5 w-5 text-gray-400 dark:text-gray-300"
+              className="absolute top-3 right-3 h-4 w-4 text-gray-400 dark:text-gray-500"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -113,35 +118,43 @@ export default function ListLayout({
             </svg>
           </div>
         </div>
-        <ul>
-          {!filteredBlogPosts.length && 'No posts found.'}
+
+        <ul className="space-y-0">
+          {!filteredBlogPosts.length && (
+            <p className="py-8 text-gray-500 dark:text-gray-400">No posts found.</p>
+          )}
           {displayPosts.map((post) => {
             const { path, date, title, summary, tags } = post
             return (
-              <li key={path} className="py-4">
-                <article className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
-                  <dl>
-                    <dt className="sr-only">Published on</dt>
-                    <dd className="text-base leading-6 font-medium text-gray-500 dark:text-gray-400">
-                      <time dateTime={date} suppressHydrationWarning>
-                        {formatDate(date, siteMetadata.locale)}
-                      </time>
-                    </dd>
-                  </dl>
-                  <div className="space-y-3 xl:col-span-3">
-                    <div>
-                      <h3 className="text-2xl leading-8 font-bold tracking-tight">
-                        <Link href={`/${path}`} className="text-gray-900 dark:text-gray-100">
-                          {title}
-                        </Link>
-                      </h3>
-                      <div className="flex flex-wrap">
-                        {tags?.map((tag) => <Tag key={tag} text={tag} />)}
-                      </div>
+              <li
+                key={path}
+                className="border-t border-gray-100 py-6 first:border-t-0 dark:border-gray-800/60"
+              >
+                <article className="flex flex-col gap-3 sm:flex-row sm:items-baseline sm:gap-8">
+                  <time
+                    dateTime={date}
+                    suppressHydrationWarning
+                    className="shrink-0 text-sm text-gray-400 dark:text-gray-500"
+                  >
+                    {formatDate(date, siteMetadata.locale)}
+                  </time>
+                  <div className="flex-1 space-y-2">
+                    <h2 className="text-lg leading-snug font-semibold tracking-tight">
+                      <Link
+                        href={`/${path}`}
+                        className="hover:text-primary-600 dark:hover:text-primary-400 text-gray-900 transition-colors dark:text-gray-100"
+                      >
+                        {title}
+                      </Link>
+                    </h2>
+                    <div className="flex flex-wrap gap-1">
+                      {tags?.map((tag) => (
+                        <Tag key={tag} text={tag} />
+                      ))}
                     </div>
-                    <div className="prose max-w-none text-gray-500 dark:text-gray-400">
+                    <p className="text-sm leading-relaxed text-gray-500 dark:text-gray-400">
                       {summary}
-                    </div>
+                    </p>
                   </div>
                 </article>
               </li>
