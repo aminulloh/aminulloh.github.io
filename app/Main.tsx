@@ -9,6 +9,9 @@ import AuthorLayout from '@/layouts/AuthorLayout'
 import { coreContent } from 'pliny/utils/contentlayer'
 import { genPageMetadata } from 'app/seo'
 
+import SpotlightCard from '@/components/SpotlightCard'
+import SectionReveal from '@/components/SectionReveal'
+
 const MAX_DISPLAY = 3
 
 export default function Home({ posts }) {
@@ -21,60 +24,61 @@ export default function Home({ posts }) {
       </AuthorLayout>
 
       <div className="border-t border-gray-100 dark:border-gray-800/60">
-        <div className="py-12">
-          <h2 className="mb-8 text-base font-semibold tracking-widest text-gray-400 uppercase dark:text-gray-500">
-            Latest Writing
-          </h2>
-
-          {!posts.length && <p className="text-gray-500 dark:text-gray-400">No posts found.</p>}
-
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {posts.slice(0, MAX_DISPLAY).map((post) => {
-              const { slug, date, title, summary, tags } = post
-              return (
+        <section className="py-16">
+          <SectionReveal>
+            <div className="mb-10 flex items-baseline justify-between">
+              <h2 className="text-base font-semibold tracking-widest text-gray-400 uppercase dark:text-gray-500">
+                Latest Writing
+              </h2>
+              {posts.length > MAX_DISPLAY && (
                 <Link
-                  key={slug}
-                  href={`/blog/${slug}`}
-                  className="group flex flex-col overflow-hidden rounded-xl border border-gray-100 transition-colors hover:border-gray-200 dark:border-gray-800/60 dark:hover:border-gray-700/60"
+                  href="/blog"
+                  className="text-xs font-semibold text-gray-400 transition-colors hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-300"
                 >
-                  <div className="border-b border-gray-100 px-5 py-3 dark:border-gray-800/60">
-                    <span className="text-primary-600 dark:text-primary-400 text-xs font-semibold tracking-widest uppercase">
-                      {tags[0] ?? 'Writing'}
-                    </span>
-                  </div>
-                  <div className="flex flex-1 flex-col px-5 py-5">
-                    <h3 className="group-hover:text-primary-600 dark:group-hover:text-primary-400 mb-3 text-base leading-snug font-semibold text-gray-900 transition-colors dark:text-white">
-                      {title}
-                    </h3>
-                    <p className="mb-5 line-clamp-3 flex-1 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
-                      {summary}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <time dateTime={date} className="text-xs text-gray-400 dark:text-gray-500">
-                        {formatDate(date, siteMetadata.locale)}
-                      </time>
-                      <span className="text-primary-600 dark:text-primary-400 text-xs font-medium">
-                        Read &rarr;
-                      </span>
-                    </div>
-                  </div>
+                  View all &rarr;
                 </Link>
-              )
-            })}
-          </div>
-
-          {posts.length > MAX_DISPLAY && (
-            <div className="mt-8 border-t border-gray-100 pt-6 dark:border-gray-800/60">
-              <Link
-                href="/blog"
-                className="text-sm font-medium text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
-                aria-label="All posts"
-              >
-                All posts &rarr;
-              </Link>
+              )}
             </div>
-          )}
-        </div>
+
+            {!posts.length && <p className="text-gray-500 dark:text-gray-400">No posts found.</p>}
+
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {posts.slice(0, MAX_DISPLAY).map((post) => {
+                const { slug, date, title, summary, tags } = post
+                return (
+                  <Link key={slug} href={`/blog/${slug}`} className="group flex">
+                    <SpotlightCard className="dark:hover:shadow-primary-900/10 flex flex-1 flex-col transition-all duration-300 hover:shadow-lg">
+                      <div className="border-b border-gray-100 px-6 py-4 dark:border-gray-800/60">
+                        <span className="text-primary-600 dark:text-primary-400 text-[10px] font-bold tracking-[0.2em] uppercase">
+                          {tags[0] ?? 'Writing'}
+                        </span>
+                      </div>
+                      <div className="flex flex-1 flex-col px-6 pt-5 pb-6">
+                        <h3 className="group-hover:text-primary-600 dark:group-hover:text-primary-400 mb-3 text-lg font-bold text-gray-900 transition-colors dark:text-white">
+                          {title}
+                        </h3>
+                        <p className="mb-6 line-clamp-3 flex-1 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
+                          {summary}
+                        </p>
+                        <div className="flex items-center justify-between border-t border-gray-100 pt-4 dark:border-gray-800/60">
+                          <time
+                            dateTime={date}
+                            className="text-[10px] font-bold tracking-wider text-gray-400 uppercase dark:text-gray-500"
+                          >
+                            {formatDate(date, siteMetadata.locale)}
+                          </time>
+                          <span className="text-primary-600 dark:text-primary-400 text-xs font-bold tracking-wider group-hover:underline">
+                            READ &rarr;
+                          </span>
+                        </div>
+                      </div>
+                    </SpotlightCard>
+                  </Link>
+                )
+              })}
+            </div>
+          </SectionReveal>
+        </section>
       </div>
     </>
   )

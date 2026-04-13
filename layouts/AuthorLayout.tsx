@@ -1,3 +1,5 @@
+'use client'
+
 import { ReactNode } from 'react'
 import type { Authors } from 'contentlayer/generated'
 import SocialIcon from '@/components/social-icons'
@@ -6,6 +8,9 @@ import Link from '@/components/Link'
 import AnimatedHeadline from '@/components/AnimatedHeadline'
 import ExperienceCarousel from '@/components/ExperienceCarousel'
 import ProjectHighlights from '@/components/ProjectHighlights'
+import SpotlightCard from '@/components/SpotlightCard'
+import SectionReveal from '@/components/SectionReveal'
+import { motion } from 'framer-motion'
 
 interface Props {
   children: ReactNode
@@ -204,7 +209,8 @@ const experiences = [
   {
     type: 'RESEARCH · ENGINEERING',
     title: 'EV Researcher',
-    company: 'Center for Research and Innovation on Advanced Transportation Electrification (CReATE)',
+    company:
+      'Center for Research and Innovation on Advanced Transportation Electrification (CReATE)',
     period: 'Aug 2022 – Feb 2023',
     description:
       'Conducted applied research on electric vehicle systems and charging infrastructure for the Indonesian market.',
@@ -236,213 +242,220 @@ export default function AuthorLayout({ children, content }: Props) {
   return (
     <div>
       {/* ── Hero ── */}
-      <section className="pt-16 pb-12 md:pt-16 md:pb-12">
-        <div className="flex flex-col gap-8 md:flex-row md:items-stretch">
+      <section className="pt-20 pb-12 md:pt-24 md:pb-16">
+        <div className="flex flex-col gap-12 md:flex-row md:items-center">
           {/* Left: avatar */}
           {avatar && (
-            <div className="shrink-0">
-              <Image
-                src={avatar}
-                alt="avatar"
-                width={288}
-                height={400}
-                className="h-52 w-36 rounded-2xl object-cover object-top ring-1 ring-gray-200 md:h-full md:w-72 dark:ring-gray-700/80"
-              />
-            </div>
+            <SectionReveal direction="right" className="shrink-0">
+              <motion.div
+                whileHover={{ scale: 1.02, rotate: 1 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+              >
+                <Image
+                  src={avatar}
+                  alt="avatar"
+                  width={288}
+                  height={400}
+                  className="h-64 w-44 rounded-3xl object-cover object-top ring-1 shadow-2xl ring-gray-200 md:h-[450px] md:w-80 dark:ring-gray-700/80"
+                />
+              </motion.div>
+            </SectionReveal>
           )}
 
           {/* Right: text */}
-          <div className="max-w-2xl space-y-6">
-            {/* Name */}
-            <h1 className="text-5xl font-bold tracking-tight text-gray-900 md:text-6xl dark:text-white">
-              {name}
-            </h1>
+          <SectionReveal className="max-w-2xl space-y-8">
+            <div className="space-y-4">
+              <h1 className="text-5xl font-extrabold tracking-tight text-gray-900 md:text-7xl dark:text-white">
+                {name}
+              </h1>
+              <AnimatedHeadline />
+            </div>
 
-            {/* Headline */}
-            <AnimatedHeadline />
-
-            {/* Subheadline */}
-            <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+            <p className="text-lg leading-relaxed text-gray-500 md:text-xl dark:text-gray-400">
               I&apos;m building PT Aminulloh Technology Service (ATS) &mdash; tackling fragmentation
               in Indonesia&apos;s EV aftersales ecosystem. 5+ years as an operator across
               engineering, product, and aftersales gives me an inside view of what&apos;s broken and
               what needs to be built.
             </p>
 
-            {/* Credential */}
-            <p className="text-xs text-gray-400 dark:text-gray-500">
+            <p className="text-sm font-medium text-gray-400 dark:text-gray-500">
               M.Sc. &amp; B.Eng. Electrical &amp; Mechatronics Engineering &middot; PENS
             </p>
 
-            {/* CTAs */}
-            <div className="flex flex-wrap gap-3 pt-2">
-              <a
-                href="#building"
-                className="inline-flex items-center rounded-lg bg-gray-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-gray-700 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200"
-              >
+            <div className="flex flex-wrap gap-4 pt-4">
+              <a href="#building" className="btn-premium">
                 See What I&apos;m Building
               </a>
-              <a
-                href="#experience"
-                className="inline-flex items-center rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:border-gray-300 hover:bg-gray-50 dark:border-gray-700 dark:bg-transparent dark:text-gray-300 dark:hover:border-gray-600 dark:hover:bg-gray-800/50"
-              >
+              <a href="#experience" className="btn-premium btn-premium-outline">
                 Track Record
               </a>
               <a
                 href={`mailto:${email}`}
-                className="inline-flex items-center px-3 py-2.5 text-sm font-medium text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
+                className="inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
               >
                 Let&apos;s Talk &rarr;
               </a>
             </div>
-          </div>
+          </SectionReveal>
         </div>
       </section>
 
       {/* ── Building ── */}
-      <section id="building" className="border-y border-gray-100 py-12 dark:border-gray-800/60">
-        <h2 className="mb-8 text-base font-semibold tracking-widest text-gray-400 uppercase dark:text-gray-500">
-          What I&apos;m Building
-        </h2>
-        <div className="overflow-hidden rounded-xl border border-gray-100 dark:border-gray-800/60">
-          {/* Header strip */}
-          <div className="flex items-center justify-between border-b border-gray-100 px-6 py-3 dark:border-gray-800/60">
-            <span className="text-base font-semibold text-gray-900 dark:text-white">
-              {venture.name}
-            </span>
-            <span className="text-primary-600 dark:text-primary-400 text-xs font-semibold tracking-widest uppercase">
-              {venture.status}
-            </span>
-          </div>
-          {/* Body */}
-          <div className="px-6 pt-5 pb-6">
-            <p className="mb-5 text-sm font-medium text-gray-700 dark:text-gray-200">
-              {venture.tagline}
-            </p>
-            <div className="mb-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <div>
-                <p className="mb-1.5 text-xs font-semibold tracking-wider text-gray-400 uppercase">
-                  The Problem
-                </p>
-                <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-                  {venture.problem}
-                </p>
+      <section id="building" className="border-y border-gray-100 py-20 dark:border-gray-800/60">
+        <SectionReveal>
+          <h2 className="mb-10 text-base font-semibold tracking-widest text-gray-400 uppercase dark:text-gray-500">
+            What I&apos;m Building
+          </h2>
+          <SpotlightCard className="glass-card">
+            {/* Header strip */}
+            <div className="flex items-center justify-between border-b border-gray-100 px-8 py-4 dark:border-gray-800/60">
+              <span className="text-lg font-bold text-gray-900 dark:text-white">
+                {venture.name}
+              </span>
+              <span className="text-primary-600 dark:text-primary-400 flex items-center gap-2 text-xs font-bold tracking-widest uppercase">
+                <span className="relative flex h-2 w-2">
+                  <span className="bg-primary-400 absolute inline-flex h-full w-full animate-ping rounded-full opacity-75"></span>
+                  <span className="bg-primary-500 relative inline-flex h-2 w-2 rounded-full"></span>
+                </span>
+                {venture.status}
+              </span>
+            </div>
+            {/* Body */}
+            <div className="px-8 pt-6 pb-8">
+              <p className="mb-6 text-base font-medium text-gray-800 dark:text-gray-100">
+                {venture.tagline}
+              </p>
+              <div className="mb-8 grid grid-cols-1 gap-8 sm:grid-cols-2">
+                <div>
+                  <p className="mb-2 text-xs font-bold tracking-widest text-gray-400 uppercase">
+                    The Problem
+                  </p>
+                  <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                    {venture.problem}
+                  </p>
+                </div>
+                <div>
+                  <p className="mb-2 text-xs font-bold tracking-widest text-gray-400 uppercase">
+                    The Insight
+                  </p>
+                  <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                    {venture.insight}
+                  </p>
+                </div>
               </div>
-              <div>
-                <p className="mb-1.5 text-xs font-semibold tracking-wider text-gray-400 uppercase">
-                  The Insight
+              <div className="border-t border-gray-100 pt-6 dark:border-gray-800/60">
+                <p className="mb-4 text-xs font-bold tracking-widest text-gray-400 uppercase">
+                  Currently Exploring
                 </p>
-                <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-                  {venture.insight}
-                </p>
+                <div className="mb-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  {venture.lookingFor.map((item) => (
+                    <div
+                      key={item}
+                      className="flex items-start gap-3 rounded-lg bg-gray-50/50 p-3 text-sm text-gray-600 dark:bg-gray-800/30 dark:text-gray-300"
+                    >
+                      <span className="bg-primary-500 mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full shadow-[0_0_8px_rgba(var(--color-primary-500),0.5)]" />
+                      {item}
+                    </div>
+                  ))}
+                </div>
+                <div className="flex flex-wrap items-center justify-between gap-4">
+                  <p className="text-xs text-gray-400 dark:text-gray-500">
+                    {venture.status_detail}
+                  </p>
+                  <a href={`mailto:${email}`} className="btn-premium">
+                    Get in Touch &rarr;
+                  </a>
+                </div>
               </div>
             </div>
-            <div className="border-t border-gray-100 pt-4 dark:border-gray-800/60">
-              <p className="mb-3 text-xs font-semibold tracking-wider text-gray-400 uppercase">
-                Currently Exploring
-              </p>
-              <div className="mb-5 space-y-2">
-                {venture.lookingFor.map((item) => (
-                  <div
-                    key={item}
-                    className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300"
-                  >
-                    <span className="bg-primary-500 mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full" />
-                    {item}
-                  </div>
-                ))}
-              </div>
-              <p className="mb-4 text-xs text-gray-400 dark:text-gray-500">
-                {venture.status_detail}
-              </p>
-              <a
-                href={`mailto:${email}`}
-                className="inline-flex items-center rounded-lg bg-gray-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-gray-700 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200"
-              >
-                Get in Touch &rarr;
-              </a>
-            </div>
-          </div>
-        </div>
+          </SpotlightCard>
+        </SectionReveal>
       </section>
 
-      {/* ── Value Propositions ── */}
-      <section className="border-y border-gray-100 py-12 dark:border-gray-800/60">
-        <h2 className="mb-8 text-base font-semibold tracking-widest text-gray-400 uppercase dark:text-gray-500">
-          What I Bring
-        </h2>
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {valuePillars.map((pillar) => (
-            <div
-              key={pillar.title}
-              className="rounded-xl border border-gray-100 bg-gray-50/50 p-5 transition-colors hover:border-gray-200 hover:bg-gray-50 dark:border-gray-800/60 dark:bg-gray-900/20 dark:hover:border-gray-700 dark:hover:bg-gray-900/40"
-            >
-              <div className="bg-primary-50 text-primary-600 dark:bg-primary-950/30 dark:text-primary-400 mb-3 flex h-8 w-8 items-center justify-center rounded-lg">
-                {pillar.icon}
-              </div>
-              <h3 className="mb-1.5 text-sm font-semibold text-gray-900 dark:text-white">
-                {pillar.title}
-              </h3>
-              <p className="text-xs leading-relaxed text-gray-500 dark:text-gray-400">
-                {pillar.description}
-              </p>
-            </div>
-          ))}
-        </div>
+      <section className="border-y border-gray-100 py-20 dark:border-gray-800/60">
+        <SectionReveal>
+          <h2 className="mb-10 text-base font-semibold tracking-widest text-gray-400 uppercase dark:text-gray-500">
+            What I Bring
+          </h2>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {valuePillars.map((pillar) => (
+              <SpotlightCard
+                key={pillar.title}
+                className="dark:hover:shadow-primary-900/10 p-6 transition-all duration-300 hover:shadow-lg"
+              >
+                <div className="bg-primary-50 text-primary-600 dark:bg-primary-950/30 dark:text-primary-400 mb-4 flex h-10 w-10 items-center justify-center rounded-xl">
+                  {pillar.icon}
+                </div>
+                <h3 className="mb-2 text-base font-bold text-gray-900 dark:text-white">
+                  {pillar.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-gray-500 dark:text-gray-400">
+                  {pillar.description}
+                </p>
+              </SpotlightCard>
+            ))}
+          </div>
+        </SectionReveal>
       </section>
 
       {/* ── Project Highlights ── */}
-      <section className="border-b border-gray-100 py-12 dark:border-gray-800/60">
-        <div className="mb-8 flex items-baseline justify-between">
-          <h2 className="text-base font-semibold tracking-widest text-gray-400 uppercase dark:text-gray-500">
-            Projects
-          </h2>
-          <Link
-            href="/projects"
-            className="text-xs font-medium text-gray-400 transition-colors hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-300"
-          >
-            View all &rarr;
-          </Link>
-        </div>
-        <ProjectHighlights projects={projectHighlights} />
+      <section className="border-b border-gray-100 py-16 dark:border-gray-800/60">
+        <SectionReveal>
+          <div className="mb-10 flex items-baseline justify-between">
+            <h2 className="text-base font-semibold tracking-widest text-gray-400 uppercase dark:text-gray-500">
+              Featured Initiatives
+            </h2>
+            <Link
+              href="/projects"
+              className="text-xs font-semibold text-gray-400 transition-colors hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-300"
+            >
+              View all &rarr;
+            </Link>
+          </div>
+          <ProjectHighlights projects={projectHighlights} />
+        </SectionReveal>
       </section>
 
       {/* ── Track Record ── */}
-      <section id="experience" className="border-b border-gray-100 py-12 dark:border-gray-800/60">
-        <h2 className="mb-2 text-base font-semibold tracking-widest text-gray-400 uppercase dark:text-gray-500">
-          Track Record
-        </h2>
-        <p className="mb-8 text-xs text-gray-400 dark:text-gray-500">
-          The operator background behind what I&apos;m building.
-        </p>
-        <ExperienceCarousel experiences={experiences} />
+      <section id="experience" className="border-b border-gray-100 py-16 dark:border-gray-800/60">
+        <SectionReveal>
+          <h2 className="mb-2 text-base font-semibold tracking-widest text-gray-400 uppercase dark:text-gray-500">
+            Track Record
+          </h2>
+          <p className="mb-10 text-xs text-gray-400 dark:text-gray-500">
+            The operator background behind what I&apos;m building.
+          </p>
+          <ExperienceCarousel experiences={experiences} />
+        </SectionReveal>
       </section>
 
       {/* ── Skills ── */}
-      <section className="pt-12 pb-16">
-        <h2 className="mb-8 text-base font-semibold tracking-widest text-gray-400 uppercase dark:text-gray-500">
-          Skills &amp; Expertise
-        </h2>
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {skillGroups.map((group) => (
-            <div key={group.category}>
-              <h3 className="mb-3 text-xs font-semibold tracking-widest text-gray-400 uppercase dark:text-gray-500">
-                {group.category}
-              </h3>
-              <ul className="space-y-2">
-                {group.items.map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300"
-                  >
-                    <span className="bg-primary-500 h-1 w-1 shrink-0 rounded-full" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+      <section className="pt-16 pb-20">
+        <SectionReveal>
+          <h2 className="mb-10 text-base font-semibold tracking-widest text-gray-400 uppercase dark:text-gray-500">
+            Skills &amp; Expertise
+          </h2>
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {skillGroups.map((group) => (
+              <div key={group.category}>
+                <h3 className="mb-4 text-xs font-bold tracking-widest text-gray-400 uppercase dark:text-gray-500">
+                  {group.category}
+                </h3>
+                <ul className="space-y-3">
+                  {group.items.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-300"
+                    >
+                      <span className="bg-primary-500 h-1.5 w-1.5 shrink-0 rounded-full opacity-50" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </SectionReveal>
       </section>
     </div>
   )

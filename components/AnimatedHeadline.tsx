@@ -17,7 +17,7 @@ const word = {
 export default function AnimatedHeadline() {
   return (
     <motion.p
-      className="text-xl leading-snug font-medium text-gray-900 md:text-2xl dark:text-white"
+      className="text-2xl leading-tight font-bold text-gray-900 md:text-4xl dark:text-white"
       variants={container}
       initial="hidden"
       animate="visible"
@@ -27,7 +27,11 @@ export default function AnimatedHeadline() {
           key={w}
           variants={word}
           style={{ display: 'inline-block' }}
-          className={w === 'Strategist.' ? 'text-primary-600 dark:text-primary-400' : ''}
+          className={
+            w === 'Strategist.'
+              ? 'text-primary-600 dark:text-primary-400 drop-shadow-[0_0_15px_rgba(var(--color-primary-500),0.3)]'
+              : ''
+          }
         >
           {w}
           {i < 2 ? '\u00a0' : ''}

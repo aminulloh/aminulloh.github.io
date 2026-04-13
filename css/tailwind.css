@@ -66,6 +66,10 @@
   --z-60: 60;
   --z-70: 70;
   --z-80: 80;
+
+  /* Patterns */
+  --pattern-grid-size: 40px;
+  --pattern-grid-color: oklch(0.5 0.02 260 / 0.05);
 }
 
 /*
@@ -201,9 +205,9 @@ input:-webkit-autofill:focus {
 /* Modern transition defaults */
 a,
 button {
-  transition-property: color, background-color, border-color, opacity, transform;
+  transition-property: color, background-color, border-color, opacity, transform, filter, box-shadow;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
+  transition-duration: 200ms;
 }
 
 /* Underline hover animation for nav links */
@@ -226,9 +230,55 @@ button {
   transform: scaleX(1);
 }
 
-/* Subtle card hover — Apple/Linear style */
-.card-hover {
-  transition-property: border-color, background-color, box-shadow;
-  transition-duration: 150ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+/* Glassmorphism */
+.glass {
+  @apply bg-white/70 backdrop-blur-md dark:bg-gray-950/70;
+}
+
+.glass-card {
+  @apply bg-white/40 ring-1 ring-gray-100 backdrop-blur-sm transition-all duration-300 hover:bg-white/60 hover:ring-gray-200 dark:bg-gray-900/40 dark:ring-gray-800/60 dark:hover:bg-gray-900/60 dark:hover:ring-gray-700/60;
+}
+
+/* Background grid pattern */
+.bg-grid {
+  background-size: var(--pattern-grid-size) var(--pattern-grid-size);
+  background-image: linear-gradient(to right, var(--pattern-grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--pattern-grid-color) 1px, transparent 1px);
+}
+
+/* Spotlight Effect Base */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(
+    400px circle at var(--mouse-x) var(--mouse-y),
+    var(--color-primary-500),
+    transparent 80%
+  );
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.spotlight-card:hover::before {
+  opacity: 0.1;
+}
+
+/* Magnetic effect for buttons (requires JS but we can setup CSS) */
+.btn-magnetic {
+  @apply relative inline-flex items-center justify-center transition-transform duration-200;
+}
+
+.btn-premium {
+  @apply relative overflow-hidden rounded-lg bg-gray-900 px-6 py-3 text-sm font-semibold tracking-wide text-white transition-all hover:-translate-y-0.5 hover:bg-gray-800 active:translate-y-0 dark:bg-gray-100 dark:text-gray-950 dark:hover:bg-gray-200;
+}
+
+.btn-premium-outline {
+  @apply border-gray-200 bg-white/50 text-gray-700 hover:border-gray-300 hover:bg-white/80 dark:border-gray-800 dark:bg-gray-900/50 dark:text-gray-300 dark:hover:border-gray-700 dark:hover:bg-gray-900/80;
 }
