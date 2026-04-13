@@ -148,9 +148,7 @@ export default function ListLayout({
                       </Link>
                     </h2>
                     <div className="flex flex-wrap gap-1">
-                      {tags?.map((tag) => (
-                        <Tag key={tag} text={tag} />
-                      ))}
+                      {tags?.map((tag) => <Tag key={tag} text={tag} />)}
                     </div>
                     <p className="text-sm leading-relaxed text-gray-500 dark:text-gray-400">
                       {summary}

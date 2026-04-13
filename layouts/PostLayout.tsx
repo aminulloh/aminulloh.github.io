@@ -49,9 +49,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
               </time>
               <PageTitle>{title}</PageTitle>
               <div className="flex flex-wrap justify-center gap-2 pt-1">
-                {tags?.map((tag) => (
-                  <Tag key={tag} text={tag} />
-                ))}
+                {tags?.map((tag) => <Tag key={tag} text={tag} />)}
               </div>
             </div>
           </header>
