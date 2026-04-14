@@ -9,6 +9,7 @@ This is NOT a generic blog template. It is a **founder credibility portfolio** f
 Primary goal: attract **investors, business partners, and co-founders**. Secondary: signal domain expertise to any hiring manager who visits.
 
 Every design and content decision should reinforce:
+
 - Founder credibility: "I've lived this problem for 5+ years as an operator"
 - Domain authority in EV aftersales (Indonesia market)
 - Execution and ownership mindset
@@ -30,16 +31,18 @@ Target audience: early-stage investors, strategic partners in EV fleet operation
 ## Design System
 
 **Aesthetic: Linear.app + Apple**
+
 - Clean, minimal, structured, premium
 - Generous whitespace, strong visual hierarchy
 - Light mode primary; dark mode fully supported
 
 **Colors** (defined in `css/tailwind.css` under `@theme`):
+
 - Primary: blue palette (`--color-primary-*`) — professional, subtle
 - Gray: neutral scale for text and borders
 - Violet + emerald: secondary accents (status badges, code syntax if used)
 
-**Animation rule:** Minimal only — subtle hover transitions (150ms), no parallax, no heavy effects.
+**Animation rule:** Minimal only — subtle hover transitions (150ms), no parallax, no heavy effects. Framer Motion (`framer-motion@^12.38.0`) is installed and used in client components (`AnimatedHeadline`, `ExperienceCarousel`, `ProjectHighlights`).
 
 **Do not** introduce teal/cyan as the primary color — it was replaced with blue intentionally.
 **Do not** add code-aesthetic elements (syntax-colored JSX blocks, `// comment` headers) to the main portfolio sections — they conflict with the Linear/Apple direction.
@@ -86,6 +89,7 @@ public/static/
 The main homepage layout. All structured sections live here as hardcoded TypeScript arrays and React components.
 
 **Section order:**
+
 1. **Hero** — founder framing copy, portrait photo (left, `md:w-72 md:h-full`), one-line credential, CTAs ("See What I'm Building" / "Track Record" / "Let's Talk")
 2. **What I'm Building** (`id="building"`) — `venture` object: PT Aminulloh Service Technology, problem/insight/currently-exploring, inline contact CTA
 3. **What I Bring** — 4 value pillar cards (Systems Thinking, Product Mindset, Business Acumen, Execution & Ownership)
@@ -122,6 +126,8 @@ npm run dev      # development server (usually starts on :3000 or :3001)
 npm run build    # production build + post-build (RSS, search index)
 ```
 
+**Package manager:** Use `npm` locally. The project has both `yarn.lock` and `package-lock.json`, but the CI workflow uses `npm ci` (via `package-lock.json`). Do not run `yarn install` — Yarn Berry 3.6.1 is configured but its lockfile is out of sync and will fail.
+
 The project uses ESLint with strict Prettier rules including **Tailwind class ordering**. Run Prettier before committing:
 
 ```bash
@@ -133,11 +139,13 @@ Or it will fail the build with `prettier/prettier` ESLint errors.
 **Critical:** Tailwind class order violations do NOT show up locally in `npm run dev`. They only surface during `npm run build` (ESLint type-check step). This means a build can look fine locally but fail CI.
 
 The safest workflow when writing new Tailwind classes:
+
 1. Write the classes in any order
 2. Run `npx prettier --write <file>` to auto-sort them
 3. Then commit
 
 Common patterns that trigger ordering errors:
+
 - Responsive/state variants (`group-hover:`, `dark:`, `sm:`) placed before base utilities
 - `line-clamp-*` placed before spacing utilities like `mb-*`
 - Transition utilities placed out of sequence
@@ -149,6 +157,7 @@ When CI fails with exit code 1 and no visible runtime error, check `prettier/pre
 ## Content Guidelines
 
 **Adding a blog post** — create `data/blog/your-post.mdx`:
+
 ```md
 ---
 title: 'Post Title'
@@ -177,7 +186,12 @@ Auto-deploys to **GitHub Pages** on push to `main` via `.github/workflows/pages.
 
 Custom domain: `aminulloh.com` (configured via CNAME / GitHub Pages settings).
 
+**CI uses `npm ci`** (not yarn). The workflow (`pages.yml`) was updated to use `npm` after Yarn Berry 3.6.1 failed in `--immutable` CI mode due to a stale v1-format `yarn.lock`.
+
+There are two workflows defined — only **"GitHub Pages"** (`pages.yml`) does the actual build and deploy. Ignore the "Deploy Next.js site to Pages" workflow status.
+
 For a base-path build:
+
 ```bash
 EXPORT=1 UNOPTIMIZED=1 BASE_PATH=/subpath npm run build
 ```
